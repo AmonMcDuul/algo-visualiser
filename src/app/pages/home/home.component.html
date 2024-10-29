@@ -1,0 +1,17 @@
+<div class="main-container">
+    <div class="nav-container">
+        <app-navbar (screenChange)="onScreenChange($event)"></app-navbar>
+    </div>
+    <div class="content-container">
+        @switch(activeScreen){
+            @case ("algemeen"){
+                <app-sort-algorithms></app-sort-algorithms>
+            }
+            @case ("leden"){
+                <app-sort-algorithms></app-sort-algorithms>
+            }
+            @default {
+            }
+        }
+    </div>
+</div>
