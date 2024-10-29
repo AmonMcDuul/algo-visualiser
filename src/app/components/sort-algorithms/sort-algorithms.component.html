@@ -1,1 +1,19 @@
-<p>sort-algorithms works!</p>
+<div class="sort-controls">
+    <button (click)="runBubbleSort()">Bubble Sort</button>
+    <button (click)="runInsertionSort()">Insertion Sort</button>
+    <button (click)="generateRandomArray()">Generate New Array</button>
+  </div>
+  <div class="array-container">
+    <div *ngFor="let item of array; index as i" class="array-item" [style.backgroundColor]="getColor(i)">
+      {{ item }}
+    </div>
+  </div>
+  <div id="visualization">
+    <div *ngFor="let height of array; let i = index" 
+         [class.active]="activeIndices.includes(i)"
+         [class.swap]="swapIndices.includes(i)"
+         [style.height]="height + 'px'"
+         class="bar">
+    </div>
+  </div>
+  
