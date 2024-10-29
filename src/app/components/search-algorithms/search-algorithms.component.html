@@ -1,7 +1,8 @@
 <div>
     <button (click)="runLinearSearch()">Linear Search</button>
     <button (click)="runBinarySearch()">Binary Search</button>
-    <button (click)="generateArray()">Generate New Array</button>
+    <button (click)="generateArray()">Generate Array</button>
+    <button (click)="shuffleArray()">Shuffle Array</button>
   </div>
   <div class="array-container">
     <div *ngFor="let item of array; index as i" class="array-item" [style.backgroundColor]="getColor(i)">

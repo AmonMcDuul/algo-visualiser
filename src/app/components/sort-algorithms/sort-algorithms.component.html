@@ -1,7 +1,7 @@
 <div class="sort-controls">
     <button (click)="runBubbleSort()">Bubble Sort</button>
     <button (click)="runInsertionSort()">Insertion Sort</button>
-    <button (click)="generateRandomArray()">Generate New Array</button>
+    <button (click)="generateRandomArray()">Generate Array</button>
   </div>
   <div class="array-container">
     <div *ngFor="let item of array; index as i" class="array-item" [style.backgroundColor]="getColor(i)">

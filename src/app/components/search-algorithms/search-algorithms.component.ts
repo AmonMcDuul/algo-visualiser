@@ -21,8 +21,16 @@ export class SearchAlgorithmsComponent {
   }
 
   generateArray() {
-    this.array = Array.from({ length: 20 }, (_, i) => i * 10);
+    this.array = Array.from({ length: 30 }, (_, i) => i * 8);
     this.clearHighlights();
+  }
+
+  shuffleArray(): number[] {
+    for (let i = this.array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [this.array[i], this.array[j]] = [this.array[j], this.array[i]];
+    }
+    return this.array;
   }
 
   clearHighlights() {

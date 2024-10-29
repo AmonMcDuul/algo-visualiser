@@ -20,7 +20,7 @@ export class SortAlgorithmsComponent {
   }
 
   generateRandomArray() {
-    this.array = Array.from({ length: 20 }, () => Math.floor(Math.random() * 150) + 50);
+    this.array = Array.from({ length: 30 }, () => Math.floor(Math.random() * 150) + 50);
     this.clearHighlights();
   }
 
