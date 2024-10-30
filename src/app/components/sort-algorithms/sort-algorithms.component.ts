@@ -31,11 +31,13 @@ export class SortAlgorithmsComponent {
   }
 
   async runBubbleSort() {
+    this.generateRandomArray()
     await this.sortAlgorithmsService.bubbleSort(this.array, this.highlight.bind(this), this.swap.bind(this));
     this.clearHighlights();
   }
 
   async runInsertionSort() {
+    this.generateRandomArray()
     await this.sortAlgorithmsService.insertionSort(this.array, this.highlight.bind(this), this.swap.bind(this));
     this.clearHighlights();
   }
