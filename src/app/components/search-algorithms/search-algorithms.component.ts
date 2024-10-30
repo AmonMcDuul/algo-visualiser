@@ -49,10 +49,18 @@ export class SearchAlgorithmsComponent {
 
   highlight(index: number) {
     this.activeIndex = index;
-    this.highlightedIndices = { [index]: 'yellow' };
+    this.highlightedIndices = { [index]: 'yellow' } ;
   }
 
-  getColor(index: number): string {
+  getColor(input: number, index: number): string {
+    if(input === this.targetValue){
+      return this.highlightedIndices[index] || 'lightgreen';
+    }
     return this.highlightedIndices[index] || '';
+  }
+
+  setSearchNumber(input: number, index: number) {
+    this.targetValue = input;
+    this.highlightedIndices = { [index]: 'lightgreen' } ;
   }
 }

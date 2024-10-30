@@ -1,19 +1,39 @@
 <div class="sort-controls">
-    <button (click)="runBubbleSort()">Bubble Sort</button>
-    <button (click)="runInsertionSort()">Insertion Sort</button>
-    <button (click)="runMergeSort()">Merge Sort</button>
-  </div>
-  <div class="array-container">
-    <div *ngFor="let item of array; index as i" class="array-item" [style.backgroundColor]="getColor(i)">
-      {{ item }}
-    </div>
+    <button class="algo-button" (click)="runBubbleSort()">Bubble Sort</button>
+    <button class="algo-button" (click)="runInsertionSort()">Insertion Sort</button>
+    <button class="algo-button" (click)="runMergeSort()">Merge Sort</button>
   </div>
   <div id="visualization">
     <div *ngFor="let height of array; let i = index" 
-         [class.active]="activeIndices.includes(i)"
-         [class.swap]="swapIndices.includes(i)"
-         [style.height]="height + 'px'"
-         class="bar">
-    </div>
+    [class.active]="activeIndices.includes(i)"
+    [class.swap]="swapIndices.includes(i)"
+    [style.height]="height + 'px'"
+    class="bar">
   </div>
-  
+</div>
+
+<!-- <div id="visualization">
+  @for(height of array; track height){
+    <div
+      [class.active]="activeIndices.includes($index)"
+      [class.swap]="swapIndices.includes($index)"
+      [style.height]="height + 'px'"
+      class="bar">
+    </div>
+  }
+</div> -->
+
+<div class="array-container">
+  <div *ngFor="let item of array; index as i" class="array-item" [style.backgroundColor]="getColor(i)">
+    {{ item }}
+  </div>
+</div>
+
+<!-- <div class="array-container">
+  @for(item of array; track item){
+    <div class="array-item" [style.backgroundColor]="getColor($index)">
+      {{ item }}
+    </div>
+  }
+  </div> -->
+

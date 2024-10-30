@@ -50,15 +50,12 @@ export class SortAlgorithmsComponent {
 
   highlight(indices: number[]) {
     this.activeIndices = indices;
-    this.highlightedIndices = { [indices[0]]: 'yellow', [indices[1]]: 'yellow' };
+    this.highlightedIndices = { [indices[0]]: 'green', [indices[1]]: 'green' };
   }
 
   swap(indices: number[]) {
     this.swapIndices = indices;
-  }
-
-  visualizeSwap(index1: number, index2: number) {
-    this.highlightedIndices = { [index1]: 'yellow', [index2]: 'yellow' };
+    this.highlightedIndices = { [indices[0]]: 'yellow', [indices[1]]: 'yellow' };
   }
   
   getColor(index: number): string {

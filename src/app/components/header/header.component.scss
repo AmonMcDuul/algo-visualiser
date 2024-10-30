@@ -1,10 +1,52 @@
-.header-container{
+.header-container {
     height: 60px;
     background: #0e2c3a;
     color: #FFF;
     display: flex;
-    // justify-content: center;
     align-items: center;
     border-bottom: 2px solid #455a64;
-    padding-left: 10px;
+    padding-left: 16px;
+    overflow: hidden;
+}
+
+.header-container h1 {
+    position: relative;
+    animation: glitch 10s ease-in-out 1.2s infinite;
+    text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.8);
+}
+
+.header-container h1:hover {
+    animation: glitch 1s ease-in-out 1; 
+}
+
+/* Glitch effect */
+@keyframes glitch {
+    0%, 100% {
+        clip-path: inset(0 0 0 0);
+        transform: none;
+    }
+    1% {
+        clip-path: inset(10% 0 85% 0);
+        transform: translate(-2px, -2px);
+    }
+    2% {
+        clip-path: inset(85% 0 10% 0);
+        transform: translate(2px, 2px);
+    }
+    3% {
+        clip-path: inset(30% 0 60% 0);
+        transform: translate(-2px, 1px);
+    }
+    4% {
+        clip-path: inset(60% 0 30% 0);
+        transform: translate(1px, -1px);
+    }
+    5% {
+        clip-path: inset(10% 0 85% 0);
+        transform: translate(-1px, -2px);
+    }
+    21%, 100% {
+        clip-path: inset(0 0 0 0);
+        transform: none;
+    }
 }
