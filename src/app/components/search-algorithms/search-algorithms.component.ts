@@ -53,6 +53,6 @@ export class SearchAlgorithmsComponent {
   }
 
   getColor(index: number): string {
-    return this.highlightedIndices[index] || 'lightgray';
+    return this.highlightedIndices[index] || '';
   }
 }

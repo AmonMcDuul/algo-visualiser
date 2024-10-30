@@ -1,18 +1,19 @@
 .array-container {
-    display: flex;
-    gap: 5px;
-  }
-  
-  .array-item {
-    width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: lightgray;
-    border: 1px solid #ddd;
-    transition: background-color 0.3s;
-  }
+  display: flex;
+  margin-top: 20px;
+  gap: 2px;
+}
+
+.array-item {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8f8f8;
+  border: 1px solid #000000;
+  transition: background-color 0.3s;
+}
 
 #visualization {
     display: flex;

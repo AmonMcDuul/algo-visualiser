@@ -42,6 +42,12 @@ export class SortAlgorithmsComponent {
     this.clearHighlights();
   }
 
+  async runMergeSort() {
+    this.generateRandomArray()
+    await this.sortAlgorithmsService.mergeSort(this.array, this.highlight.bind(this), this.swap.bind(this));
+    this.clearHighlights();
+  }
+
   highlight(indices: number[]) {
     this.activeIndices = indices;
     this.highlightedIndices = { [indices[0]]: 'yellow', [indices[1]]: 'yellow' };
@@ -50,16 +56,12 @@ export class SortAlgorithmsComponent {
   swap(indices: number[]) {
     this.swapIndices = indices;
   }
-  
-  visualizeElement(index: number) {
-    this.highlightedIndices = [index.toString()];
-  }
 
   visualizeSwap(index1: number, index2: number) {
     this.highlightedIndices = { [index1]: 'yellow', [index2]: 'yellow' };
   }
   
   getColor(index: number): string {
-    return this.highlightedIndices[index] || 'lightgray';
+    return this.highlightedIndices[index] || '';
   }
 }
