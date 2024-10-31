@@ -11,7 +11,7 @@ import { SearchAlgorithmsComponent } from "../../components/search-algorithms/se
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-  activeScreen: string = 'Algemeen';
+  activeScreen: string = 'sort';
 
   onScreenChange(screen: string) {
     this.activeScreen = screen;

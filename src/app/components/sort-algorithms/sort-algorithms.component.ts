@@ -48,6 +48,44 @@ export class SortAlgorithmsComponent {
     this.clearHighlights();
   }
 
+  async runQuickSort() {
+    this.generateRandomArray()
+    await this.sortAlgorithmsService.quickSort(this.array, 0, this.array.length-1, this.highlight.bind(this), this.swap.bind(this));
+    this.clearHighlights();
+  }
+
+  async runSelectionSort() {
+    this.generateRandomArray()
+    await this.sortAlgorithmsService.selectionSort(this.array, this.highlight.bind(this), this.swap.bind(this));
+    this.clearHighlights();
+  }
+
+  async runHeapSort() {
+    this.generateRandomArray()
+    await this.sortAlgorithmsService.heapSort(this.array);
+    this.clearHighlights();
+  }
+
+  async runCountingSort() {
+    this.generateRandomArray()
+    await this.sortAlgorithmsService.countingSort(this.array);
+    this.clearHighlights();
+  }
+
+  async runRadixSort() {
+    this.generateRandomArray()
+    await this.sortAlgorithmsService.radixSort(this.array);
+    this.clearHighlights();
+  }
+
+  async runShellSort() {
+    this.generateRandomArray()
+    await this.sortAlgorithmsService.shellSort(this.array);
+    this.clearHighlights();
+  }
+
+
+
   highlight(indices: number[]) {
     this.activeIndices = indices;
     this.highlightedIndices = { [indices[0]]: 'green', [indices[1]]: 'green' };
