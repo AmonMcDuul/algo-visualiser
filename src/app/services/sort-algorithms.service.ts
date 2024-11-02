@@ -84,21 +84,22 @@ export class SortAlgorithmsService {
   async quickSort(arr: number[], left = 0, right = arr.length - 1, highlight: (indices: number[]) => void, swap: (indices: number[]) => void) {
     highlight([left, right]);
     if (left < right) {
-      const pivotIndex = await this.partition(arr, left, right);
-      swap([pivotIndex]);
+      const pivotIndex = await this.partition(arr, left, right, highlight, swap);
       await this.quickSort(arr, left, pivotIndex - 1, highlight, swap);
       await this.quickSort(arr, pivotIndex + 1, right, highlight, swap);
     }
   }
 
-  private async partition(arr: number[], left: number, right: number): Promise<number> {
+  private async partition(arr: number[], left: number, right: number, highlight: (indices: number[]) => void, swap: (indices: number[]) => void): Promise<number> {
     const pivot = arr[right];
     let i = left - 1;
 
     for (let j = left; j < right; j++) {
+      swap([j, right]);
       if (arr[j] < pivot) {
         i++;
         [arr[i], arr[j]] = [arr[j], arr[i]];
+        highlight([i,j])
       }
       await this.delay(30);
     }
@@ -126,18 +127,19 @@ export class SortAlgorithmsService {
   }
 
   // Heap Sort
-  async heapSort(arr: number[]) {
+  async heapSort(arr: number[], highlight: (indices: number[]) => void, swap: (indices: number[]) => void) {
     for (let i = Math.floor(arr.length / 2) - 1; i >= 0; i--) {
-      await this.heapify(arr, arr.length, i);
+      highlight([i]);
+      await this.heapify(arr, arr.length, i, swap);
     }
     for (let i = arr.length - 1; i > 0; i--) {
       [arr[0], arr[i]] = [arr[i], arr[0]];
       await this.delay(100);
-      await this.heapify(arr, i, 0);
+      await this.heapify(arr, i, 0, swap);
     }
   }
 
-  private async heapify(arr: number[], n: number, i: number) {
+  private async heapify(arr: number[], n: number, i: number, swap: (indices: number[]) => void) {
     let largest = i;
     const left = 2 * i + 1;
     const right = 2 * i + 2;
@@ -147,13 +149,15 @@ export class SortAlgorithmsService {
 
     if (largest !== i) {
       [arr[i], arr[largest]] = [arr[largest], arr[i]];
+      swap([i]);
       await this.delay(30);
-      await this.heapify(arr, n, largest);
+      await this.heapify(arr, n, largest, swap);
     }
+    swap([0]);
   }
 
   // Counting Sort
-  async countingSort(arr: number[]) {
+  async countingSort(arr: number[], highlight: (indices: number[]) => void, swap: (indices: number[]) => void) {
     const max = Math.max(...arr);
     const count = new Array(max + 1).fill(0);
     const output = new Array(arr.length);
@@ -169,20 +173,21 @@ export class SortAlgorithmsService {
 
     for (let i = 0; i < arr.length; i++) {
       arr[i] = output[i];
+      swap([i]);
       await this.delay(30);
     }
   }
 
   // Radix Sort
-  async radixSort(arr: number[]) {
+  async radixSort(arr: number[], highlight: (indices: number[]) => void, swap: (indices: number[]) => void) {
     const max = Math.max(...arr);
 
     for (let exp = 1; Math.floor(max / exp) > 0; exp *= 10) {
-      await this.countingSortByDigit(arr, exp);
+      await this.countingSortByDigit(arr, exp, swap);
     }
   }
 
-  private async countingSortByDigit(arr: number[], exp: number) {
+  private async countingSortByDigit(arr: number[], exp: number, swap: (indices: number[]) => void) {
     const output = new Array(arr.length).fill(0);
     const count = new Array(10).fill(0);
 
@@ -201,23 +206,26 @@ export class SortAlgorithmsService {
 
     for (let i = 0; i < arr.length; i++) {
       arr[i] = output[i];
+      swap([i]);
       await this.delay(30);
     }
   }
 
   // Shell Sort
-  async shellSort(arr: number[]) {
+  async shellSort(arr: number[], highlight: (indices: number[]) => void, swap: (indices: number[]) => void) {
     for (let gap = Math.floor(arr.length / 2); gap > 0; gap = Math.floor(gap / 2)) {
       for (let i = gap; i < arr.length; i++) {
         const temp = arr[i];
         let j;
-
+        highlight([i]);
         for (j = i; j >= gap && arr[j - gap] > temp; j -= gap) {
           arr[j] = arr[j - gap];
+          swap([j]);
           await this.delay(30);
         }
 
         arr[j] = temp;
+        highlight([i]);
         await this.delay(30);
       }
     }

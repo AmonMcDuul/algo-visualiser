@@ -47,6 +47,19 @@ export class SearchAlgorithmsComponent {
     this.foundIndex = await this.searchService.binarySearch(this.array, this.targetValue, this.highlight.bind(this));
   }
 
+  async runJumpSearch() {
+    this.foundIndex = await this.searchService.jumpSearch(this.array, this.targetValue, this.highlight.bind(this));
+  }
+
+  async runExponentialSearch() {
+    this.foundIndex = await this.searchService.exponentialSearch(this.array, this.targetValue, this.highlight.bind(this));
+  }
+
+  async runInterpolationSearch() {
+    this.foundIndex = await this.searchService.interpolationSearch(this.array, this.targetValue, this.highlight.bind(this));
+  }
+
+
   highlight(index: number) {
     this.activeIndex = index;
     this.highlightedIndices = { [index]: 'yellow' } ;

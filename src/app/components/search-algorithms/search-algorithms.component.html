@@ -1,8 +1,12 @@
 <div class="controls-container">
   <button class="algo-button" (click)="runLinearSearch()">Linear Search</button>
   <button class="algo-button" (click)="runBinarySearch()">Binary Search</button>
-  <button class="algo-button" (click)="generateArray()">Generate Array</button>
+  <button class="algo-button" (click)="runJumpSearch()">Jumo Search</button>
+  <button class="algo-button" (click)="runExponentialSearch()">Exponential Search</button>
+  <button class="algo-button" (click)="runInterpolationSearch()">Interpolation Search</button>
+  <button class="algo-button" (click)="generateArray()">Reset Array</button>
   <button class="algo-button" (click)="shuffleArray()">Shuffle Array</button>
+
 </div>
 <div id="visualization">
   @for(height of array; track height){
